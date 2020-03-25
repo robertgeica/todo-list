@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Todo App</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://kit.fontawesome.com/16efb90edc.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="styles.css">
+
+        
+    </head>
+    <body>
+
+        <div class="todo-container">
+            <input id="task" type="text" placeholder="todo here">
+
+            <div class="buttons">
+                <input id="removeAll" class="button" type="button" value="Remove All">
+                <button id="addTask" class="button">Add Task</button>
+            </div>
+
+            <ul class="todo-list"></ul>
+
+            <input id="filter" type="text" onkeyup="filterTodos()" placeholder="search todo">
+
+
+        </div>
+        
+        
+        
+        <script src="script.js"></script>
+    </body>
+</html>
