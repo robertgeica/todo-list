@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css?family=Solway&display=swap');
+
+:root {
+
+    --main-color : #70a1ff;
+    --second-color: #f7d794;
+    --completed-color:#e77f67;
+
+}
+
+* {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-family: 'Solway', serif;
+}
+
+body {
+    background-image: url('background.png');
+}
+
+
+
+
+.todo-container {
+    margin: auto;
+    margin-top: 10vh;
+    width: 40vh;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+} 
+
+#task {
+    padding: 5px;
+    font-size: 1.5em;
+    transition: 0.5s;
+    border: 0px;
+    border-bottom: 1px solid var(--main-color);
+    margin-bottom: 1rem;
+}
+
+
+
+#task:focus {
+    border: none;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.button {
+    width: 49%;
+    padding: 1em;
+    /* border: 1px solid black; */
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    
+    background-color: var(--second-color);
+}
+
+.button:hover {
+    background: var(--main-color);
+}
+
+.button:active {
+    background: var(--completed-color);
+}
+
+#removeAll {
+    margin-right: 1%;
+
+}
+
+#addTaskButton {
+    margin-left: 1%;
+}
+
+li {
+    list-style: none;
+    padding: 12px 16px 12px 16px;
+    background: var(--main-color);
+    border-bottom: 1px solid black;
+    font-size: 24px;
+    transition: all 0.5s cubic-bezier(.55, 0, .1, 1);
+}
+
+
+li:hover {
+    cursor: pointer;
+}
+
+
+.taskCompleted {
+    text-decoration: line-through;
+    background-color: var(--completed-color);
+}
+
+ul {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    
+    margin-top: 2em;
+
+}
+
+.hide {
+    display: none;
+}
+
