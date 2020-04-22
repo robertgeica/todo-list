@@ -4,11 +4,20 @@ user_input.focus();
 
 const addTodo = () => {
     if(user_input.value !== '') {
-        const todo = user_input.value.trim();
-        localStorage.setItem(`${todo}`, todo);
+        const todoInput = user_input.value.trim();
+
+        const todoObj = {
+            id: Date.now(),
+            todo: todoInput,
+            done: false
+        }
+
+        console.log(todoObj.id);
+
+        localStorage.setItem(todoObj.id, JSON.stringify(todoObj));
         
         user_input.value = '';
-        renderTodo(todo); // display on addtask click
+        renderTodo(todoObj.id); // display on addtask click
     }
 }
 const addButton = document.getElementById('addTask');
@@ -26,12 +35,25 @@ user_input.addEventListener('keyup', e => {
 // render todo list
 const list = document.querySelector('.todo-list');
 const renderTodo = (key) => {
-    const myList = `
-        <li>  
-            ${localStorage.getItem(key)} 
+    let data = JSON.parse(localStorage.getItem(key));
+    let myList;
+
+    if(data.done) {
+         myList = `
+        <li class="taskCompleted" id="${key}">  
+            ${data.todo} 
             <i class="far fa-trash-alt delete"></i>
         </li>
     `;
+    } else {
+         myList = `
+        <li id="${key}">  
+            ${data.todo} 
+            <i class="far fa-trash-alt delete"></i>
+        </li>
+    `;
+    }
+    
 
     list.innerHTML += myList;
 }
@@ -57,7 +79,8 @@ list.addEventListener('click', e => {
     if(item.classList.contains('delete')) {
         item.parentNode.remove(); // remove from display
 
-        const key = item.parentNode.textContent.trim();
+        const key = item.parentNode.id;
+        console.log(key);
         localStorage.removeItem(key); // remove from localstorage
     }
 });
@@ -65,8 +88,24 @@ list.addEventListener('click', e => {
 
 // mark complete
 list.addEventListener('click', e => {
+
     const item = e.target.classList;
-    item.contains('taskCompleted') ? item.remove('taskCompleted') : item.add('taskCompleted');
+    const key = e.target.id;
+    let data = JSON.parse(localStorage.getItem(key));
+
+    if(data.done) {
+        data.done = false;
+        item.remove('taskCompleted');
+        localStorage.setItem(key, JSON.stringify(data));
+        console.log(data);
+
+    } else {
+        data.done = true;
+        item.add('taskCompleted');
+        localStorage.setItem(key, JSON.stringify(data));
+        console.log(data);
+    }
+
 });
 
 

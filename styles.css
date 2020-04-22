@@ -92,7 +92,7 @@ li {
 
 
 li:hover {
-    background: var(--hover-color);
+    /* background: var(--hover-color); */
     cursor: pointer;
 }
 
@@ -116,3 +116,11 @@ ul {
     display: none;
 }
 
+li {
+    
+
+}
+
+i {
+    
+}
